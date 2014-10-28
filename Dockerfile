@@ -2,6 +2,8 @@ FROM tutum/wordpress-stackable:latest
 
 RUN apt-get update && \
   apt-get -yq install php5-memcached && \
+  a2enmod headers && \
+  a2enmod expires && \
   rm -rf /var/lib/apt/lists/*
 
 ENV DB_HOST **LinkMe**
