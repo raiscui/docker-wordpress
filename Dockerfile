@@ -1,7 +1,8 @@
 FROM tutum/wordpress-stackable:latest
 
-RUN apt-get -yq install memcached \
-&& apt-get install php5-memcached
+RUN apt-get update && \
+  apt-get -yq install php5-memcached && \
+  rm -rf /var/lib/apt/lists/*
 
 ENV DB_HOST **LinkMe**
 ENV DB_PORT **LinkMe**
@@ -10,5 +11,5 @@ ENV DB_USER admin
 ENV DB_PASS **ChangeMe**
 
 EXPOSE 80
-VOLUME ["/app/wp-content"]
+VOLUME ["/app"]
 CMD ["/run-wordpress.sh"]
